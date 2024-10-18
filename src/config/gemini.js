@@ -9,8 +9,16 @@ import {
     HarmCategory,
     HarmBlockThreshold,
 } from "@google/generative-ai";
-require("dotenv").config();
+
+import dotenv from "dotenv";
+dotenv.config();
+
 const API_KEY = process.env.API_KEY;
+
+if (!API_KEY) {
+    throw new Error("API_KEY is missing. Please set it in the environment variables.");
+}
+
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const model = genAI.getGenerativeModel({
@@ -28,15 +36,14 @@ const generationConfig = {
 async function run(prompt) {
     const chatSession = model.startChat({
         generationConfig,
-        // safetySettings: Adjust safety settings
-        // See https://ai.google.dev/gemini-api/docs/safety-settings
         history: [
+            // You can include previous chat history here
         ],
     });
 
     const result = await chatSession.sendMessage(prompt);
     const response = result.response;
-    console.log(response.text());
+    console.log(await response.text());
     return response.text();
 }
 
