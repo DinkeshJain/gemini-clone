@@ -6,7 +6,7 @@ import {
 
 // Access the API key from the environment variable
 const API_KEY = process.env.API_KEY;
-
+console.log("API_KEY:", API_KEY);
 if (!API_KEY) {
     throw new Error("API_KEY is missing. Please set it in the environment variables.");
 }
