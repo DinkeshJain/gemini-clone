@@ -3,7 +3,7 @@ import {
     HarmCategory,
     HarmBlockThreshold,
 } from "@google/generative-ai";
-
+require('dotenv').config();
 // Access the API key from the environment variable
 const API_KEY = process.env.API_KEY;
 console.log("API_KEY:", API_KEY); // Log the API key (only for debugging; consider removing this in production)
