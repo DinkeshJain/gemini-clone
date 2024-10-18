@@ -1,18 +1,10 @@
-/*
- * Install the Generative AI SDK
- *
- * $ npm install @google/generative-ai
- */
-
 import {
     GoogleGenerativeAI,
     HarmCategory,
     HarmBlockThreshold,
 } from "@google/generative-ai";
 
-import dotenv from "dotenv";
-dotenv.config();
-
+// Access the API key from the environment variable
 const API_KEY = process.env.API_KEY;
 
 if (!API_KEY) {
