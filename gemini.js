@@ -3,11 +3,15 @@
  *
  * $ npm install @google/generative-ai
  */
+import express from "express"
 import {
     GoogleGenerativeAI,
     HarmCategory,
     HarmBlockThreshold,
 } from "@google/generative-ai";
+
+const app = express()
+const PORT = process.env.PORT || 4000
 
 const API_KEY = process.env.API_KEY;
 console.log(API_KEY);
@@ -39,5 +43,8 @@ async function run(prompt) {
     console.log(response.text());
     return response.text();
 }
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`)
+})
 
 export default run;
